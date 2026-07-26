@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Parts Store</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Website Start -->
+
+    <header class="header">
+
+        <div class="logo">
+            Mobile Parts Store
+        </div>
+
+ <nav class="navbar">
+
+    <ul class="nav-links">
+
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+
+    </ul>
+
+    <div class="nav-icons">
+
+        <span title="Search">🔍</span>
+
+       <div class="wishlist-icon">
+
+    ❤️
+
+    <span id="wishlistCount">0</span>
+
+</div>
+
+     <div
+    class="cart-icon"
+    id="openCart">
+
+    🛒
+
+    <span id="cartCount">0</span>
+
+</div>
+
+        <span title="Account">👤</span>
+
+    </div>
+
+</nav>
+
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+
+        <section class="hero">
+
+          <div class="hero-content">
+
+    <span class="offer-badge">
+        🔥 Up To 30% OFF
+    </span>
+
+    <h1>
+        Premium Mobile Parts
+    </h1>
+
+    <p>
+        Buy original LCDs, Batteries, Charging Ports,
+        Speakers and Accessories with trusted quality
+        and fast delivery across Pakistan.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="#" class="btn">
+            Shop Now
+        </a>
+
+        <a href="#" class="btn secondary-btn">
+            View Categories
+        </a>
+
+    </div>
+
+    <div class="hero-stats">
+
+        <div>
+
+            <h3>5000+</h3>
+
+            <p>Products</p>
+
+        </div>
+
+        <div>
+
+            <h3>2000+</h3>
+
+            <p>Customers</p>
+
+        </div>
+
+        <div>
+
+            <h3>99%</h3>
+
+            <p>Satisfaction</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+            <div class="hero-image">
+
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600"
+                    alt="Mobile Phone">
+
+            </div>
+
+        </section>
+
+
+        <section class="features">
+
+    <div class="feature-box">
+
+        <div class="feature-icon">🚚</div>
+
+        <h3>Fast Delivery</h3>
+
+        <p>Nationwide delivery within 2–4 days.</p>
+
+    </div>
+
+    <div class="feature-box">
+
+        <div class="feature-icon">🛡️</div>
+
+        <h3>Original Products</h3>
+
+        <p>100% genuine mobile parts guarantee.</p>
+
+    </div>
+
+    <div class="feature-box">
+
+        <div class="feature-icon">💳</div>
+
+        <h3>Secure Payment</h3>
+
+        <p>Safe and trusted payment methods.</p>
+
+    </div>
+
+    <div class="feature-box">
+
+        <div class="feature-icon">📞</div>
+
+        <h3>24/7 Support</h3>
+
+        <p>Always ready to help our customers.</p>
+
+    </div>
+
+</section>
+
+
+        <!-- Search Section -->
+
+        <section class="search-section">
+
+            <h2>Find Your Mobile Part</h2>
+
+            <div class="search-box">
+
+               <input type="text"
+                    id="searchInput"
+                      placeholder="Search Mobile Parts...">
+               <select id="categoryFilter">
+                    <option>All Categories</option>
+                    <option>LCD</option>
+                    <option>Battery</option>
+                    <option>Charging Port</option>
+                    <option>Speaker</option>
+                    <option>Camera</option>
+
+                </select>
+
+                <button>Search</button>
+
+            </div>
+
+        </section>
+
+
+
+        
+        <!-- Categories Section -->
+<section class="categories">
+
+    <h2>Shop By Category</h2>
+
+    <div class="category-grid">
+
+        <div class="category-card">
+
+            <div class="category-icon">📱</div>
+
+            <h3>LCD</h3>
+
+            <p>120 Products</p>
+
+        </div>
+
+        <div class="category-card">
+
+            <div class="category-icon">🔋</div>
+
+            <h3>Battery</h3>
+
+            <p>85 Products</p>
+
+        </div>
+
+        <div class="category-card">
+
+            <div class="category-icon">🔌</div>
+
+            <h3>Charging Port</h3>
+
+            <p>56 Products</p>
+
+        </div>
+
+        <div class="category-card">
+
+            <div class="category-icon">📷</div>
+
+            <h3>Camera</h3>
+
+            <p>40 Products</p>
+
+        </div>
+
+        <div class="category-card">
+
+            <div class="category-icon">🔊</div>
+
+            <h3>Speaker</h3>
+
+            <p>35 Products</p>
+
+        </div>
+
+        <div class="category-card">
+
+            <div class="category-icon">🎧</div>
+
+            <h3>Accessories</h3>
+
+            <p>210 Products</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+        
+        <!-- Featured Products -->
+
+        <section class="products">
+
+            <h2>Featured Products</h2>
+
+            <div class="product-grid" id="productGrid">
+
+                <!-- Products will be loaded by JavaScript -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+</main>
+
+<div id="toast" class="toast">
+
+    <span id="toastMessage">
+        Product Added
+    </span>
+
+</div>
+
+<script src="data/products.js"></script>
+<script src="script.js"></script>
+
+
+    <!-- Website End -->
+
+    <script src="data/products.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
