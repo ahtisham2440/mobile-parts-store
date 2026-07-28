@@ -51,6 +51,12 @@ const toastMessage = document.getElementById("toastMessage");
 let cart = [];
 let wishlist = [];
 
+const cartSidebar = document.getElementById("cartSidebar");
+const openCart = document.getElementById("openCart");
+const closeCart = document.getElementById("closeCart");
+const cartItems = document.getElementById("cartItems");
+const cartTotal = document.getElementById("cartTotal");
+
 // ==========================
 // Toast Notification
 // ==========================
@@ -173,11 +179,29 @@ function addToCart(id) {
 
     if (!selectedProduct) return;
 
-    cart.push(selectedProduct);
+    const existing = cart.find(item => item.id === id);
 
-    cartCount.innerText = cart.length;
+if(existing){
+
+    existing.quantity++;
+
+}else{
+
+    cart.push({
+
+        ...selectedProduct,
+
+        quantity:1
+
+    });
+
+}
+
+    cartCount.innerText = cart.length;updateCart
 
     showToast(selectedProduct.name + " added to cart!");
+
+    updateCart();
 
 }
 
@@ -205,5 +229,130 @@ function addToWishlist(id) {
     wishlistCount.innerText = wishlist.length;
 
     showToast(selectedProduct.name + " added to wishlist!");
+
+}
+
+// ==========================
+// CART SIDEBAR
+// ==========================
+
+openCart.addEventListener("click", () => {
+
+    cartSidebar.classList.add("active");
+
+    updateCart();
+
+});
+
+closeCart.addEventListener("click", () => {
+
+    cartSidebar.classList.remove("active");
+
+});
+function updateCart() {
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = "<p>Your cart is empty.</p>";
+
+        cartTotal.innerText = "0";
+
+        cartCount.innerText = "0";
+
+        return;
+
+    }
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach((product, index) => {
+
+        total += product.price * product.quantity;
+
+        cartItems.innerHTML += `
+
+        <div class="cart-product">
+
+            <h4>${product.name}</h4>
+
+            <p>
+
+Qty : ${product.quantity}
+
+<br>
+
+Rs. ${(product.price * product.quantity).toLocaleString()}
+
+</p>
+
+<div class="qty-box">
+
+    <button onclick="decreaseQty(${index})">-</button>
+
+    <span>${product.quantity}</span>
+
+    <button onclick="increaseQty(${index})">+</button>
+
+</div>
+
+            <button
+                class="remove-btn"
+                onclick="removeFromCart(${index})">
+
+                Remove
+
+            </button>
+
+        </div>
+
+        <hr>
+
+        `;
+
+    });
+
+    cartTotal.innerText = total.toLocaleString();
+
+   cartCount.innerText = cart.reduce(
+    (total,item)=> total + item.quantity,
+    0
+);
+
+}
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+    showToast("Product removed from cart.");
+
+}
+function increaseQty(index){
+
+    cart[index].quantity++;
+
+    updateCart();
+
+}
+
+function decreaseQty(index){
+
+    if(cart[index].quantity > 1){
+
+        cart[index].quantity--;
+
+    }else{
+
+        cart.splice(index,1);
+
+        showToast("Product removed from cart.");
+
+    }
+
+    updateCart();
 
 }
