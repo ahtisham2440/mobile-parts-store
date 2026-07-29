@@ -13,6 +13,7 @@ const products = [
         stock: 15,
         brand: "Apple",
         image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=400"
+        
     },
     {
         id: 2,
@@ -56,6 +57,33 @@ const openCart = document.getElementById("openCart");
 const closeCart = document.getElementById("closeCart");
 const cartItems = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
+// ==========================
+// PRODUCT MODAL
+// ==========================
+
+const productModal = document.getElementById("productModal");
+
+const closeModal = document.getElementById("closeModal");
+
+const modalImage = document.getElementById("modalImage");
+
+const modalName = document.getElementById("modalName");
+
+const modalBrand = document.getElementById("modalBrand");
+
+const modalCategory = document.getElementById("modalCategory");
+
+const modalStock = document.getElementById("modalStock");
+
+const modalPrice = document.getElementById("modalPrice");
+
+const modalDescription = document.getElementById("modalDescription");
+
+const modalCartBtn = document.getElementById("modalCartBtn");
+
+const modalWishlistBtn = document.getElementById("modalWishlistBtn");
+
+let currentProductId = null;
 
 // ==========================
 // Toast Notification
@@ -108,6 +136,14 @@ function displayProducts(productList) {
             <div class="rating">
                 ⭐⭐⭐⭐⭐
             </div>
+
+            <button
+    class="details-btn"
+    onclick="openProduct(${product.id})">
+
+    View Details
+
+</button>
 
             <button
                 class="cart-btn"
@@ -331,6 +367,65 @@ function removeFromCart(index){
     showToast("Product removed from cart.");
 
 }
+
+// ==========================
+// PRODUCT MODAL FUNCTIONS
+// ==========================
+
+function openProduct(id){
+
+    const product = products.find(item => item.id === id);
+
+    if(!product) return;
+
+    currentProductId = id;
+
+    modalImage.src = product.image;
+
+    modalName.innerText = product.name;
+
+    modalBrand.innerText = product.brand;
+
+    modalCategory.innerText = product.category;
+
+    modalStock.innerText = product.stock + " Available";
+
+    modalPrice.innerText = "Rs. " + product.price.toLocaleString();
+
+    modalDescription.innerText = product.description;
+
+    productModal.classList.add("active");
+
+}
+
+closeModal.addEventListener("click", () => {
+
+    productModal.classList.remove("active");
+
+});
+
+productModal.addEventListener("click", (e) => {
+
+    if(e.target === productModal){
+
+        productModal.classList.remove("active");
+
+    }
+
+});
+
+modalCartBtn.addEventListener("click", () => {
+
+    addToCart(currentProductId);
+
+});
+
+modalWishlistBtn.addEventListener("click", () => {
+
+    addToWishlist(currentProductId);
+
+});
+
 function increaseQty(index){
 
     cart[index].quantity++;

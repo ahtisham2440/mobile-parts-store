@@ -995,3 +995,158 @@ button{
     font-weight:bold;
 
 }
+/* ==========================
+   PRODUCT MODAL
+========================== */
+
+.product-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    visibility:hidden;
+
+    opacity:0;
+
+    transition:.35s;
+
+    z-index:100000;
+
+}
+
+.product-modal.active{
+
+    visibility:visible;
+
+    opacity:1;
+
+}
+
+.modal-content{
+
+    width:900px;
+
+    max-width:95%;
+
+    background:#fff;
+
+    border-radius:16px;
+
+    display:flex;
+
+    gap:40px;
+
+    padding:35px;
+
+    position:relative;
+
+    animation:popup .35s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.close-modal{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    border:none;
+
+    background:none;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+}
+
+.modal-image{
+
+    flex:1;
+
+}
+
+.modal-image img{
+
+    width:100%;
+
+    border-radius:12px;
+
+}
+
+.modal-info{
+
+    flex:1;
+
+}
+
+.modal-info h2{
+
+    margin-bottom:15px;
+
+}
+
+.modal-info p{
+
+    margin:10px 0;
+
+    line-height:1.7;
+
+}
+
+.modal-info h3{
+
+    color:#0057ff;
+
+    font-size:30px;
+
+    margin:20px 0;
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+.modal-buttons button{
+
+    flex:1;
+
+}
